@@ -1,0 +1,12 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    password: demonetisation1234
+    port: 587
+    username: durgashankarpatra54@gmail.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+    
