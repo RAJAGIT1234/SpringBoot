@@ -1,0 +1,18 @@
+ data:
+  app:
+   emp:
+    eno: 102
+    ename: Raja
+    esal: 123.87
+   projs:
+         - AA
+         - BB
+         - Durga
+   modules:
+        AA: 12
+        HH: 14
+        KK: 19
+   adrss:
+        aid: 199
+        loc: bls
+        pin: 75683
