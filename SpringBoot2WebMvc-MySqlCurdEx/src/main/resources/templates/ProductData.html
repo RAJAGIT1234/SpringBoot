@@ -1,0 +1,73 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Products Data Page!</h3>
+			</div>
+			<div class="card-body">
+
+				<table class="table table-hover">
+					<tr class="bg-info text-white">
+						<th>ID</th>
+						<th>CODE</th>
+						<th>COST</th>
+						<th>VENDOR</th>
+						<th>NOTE</th>
+						<th>GST</th>
+						<th>DISCOUNT</th>
+						<th>OPERATIONS</th>
+					</tr>
+					<!-- for(Product ob:list) -->
+					<tr th:each="ob:${list}">
+						<td th:text="${ob.prodId}"></td>
+						<td th:text="${ob.prodCode}"></td>
+						<td th:text="${ob.prodCost}"></td>
+						<td th:text="${ob.prodVen}"></td>
+						<td th:text="${ob.prodNote}"></td>
+						<td th:text="${ob.prodGst}"></td>
+						<td th:text="${ob.prodDisc}"></td>
+						<td><a th:href="@{/product/delete(id=${ob.prodId})}"
+							class="btn btn-danger"> DELETE </a> | <a
+							th:href="@{/product/edit(id=${ob.prodId})}"
+							class="btn btn-warning"> EDIT </a></td>
+					</tr>
+
+				</table>
+			</div>
+
+			<div class="card-footer bg-white" th:if="${message!=''}">
+				<span class="text-success" th:text="${message}"></span>
+			</div>
+
+			<!-- Pagination starts -->
+			<hr />
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" th:if="${!page.isFirst()}"><a class="page-link" th:href="@{/product/all(page=0)}">FIRST</a></li>
+					<li class="page-item" th:if="${page.hasPrevious()}"><a class="page-link" th:href="@{/product/all(page=${page.number-1})}">Previous</a></li>
+
+					<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+						<th:block th:if="${i==page.number}">
+							<li class="page-item active"><a class="page-link" th:href="@{/product/all(page=${i})}">[[${i+1}]]</a></li>
+						</th:block>
+						<th:block th:if="${i!=page.number}">
+							<li class="page-item"><a class="page-link" th:href="@{/product/all(page=${i})}">[[${i+1}]]</a></li>
+						</th:block>
+					</th:block>
+					<li class="page-item" th:if="${page.hasNext()}"><a class="page-link" th:href="@{/product/all(page=${page.number+1})}">Next</a></li>
+					<li class="page-item" th:if="${!page.isLast()}"><a class="page-link" th:href="@{/product/all(page=${page.totalPages-1})}">LAST</a></li>
+				</ul>
+			</nav>
+			<!-- Pagination ends -->
+			<hr />
+
+		</div>
+		<a th:href="@{/product/register}" class="btn btn-warning">Add New!</a>
+	</div>
+</body>
+</html>

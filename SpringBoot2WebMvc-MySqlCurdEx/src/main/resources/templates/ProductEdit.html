@@ -1,0 +1,71 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Products EDIT Page!</h3>
+			</div>
+			<div class="card-body">
+
+				<form th:action="@{/product/update}" method="POST" th:object="${product}">
+					<div class="row">
+						<div class="col-2">
+							<label>ID</label>
+						</div>
+						<div class="col-6">
+							<input type="text" th:field="*{prodId}" class="form-control" readonly/>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-2">
+							<label>CODE</label>
+						</div>
+						<div class="col-6">
+							<input type="text" th:field="*{prodCode}" class="form-control" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-2">
+							<label>COST</label>
+						</div>
+						<div class="col-6">
+							<input type="text" th:field="*{prodCost}" class="form-control" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-2">
+							<label>VENDOR</label>
+						</div>
+						<div class="col-6">
+							<select th:field="*{prodVen}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="NIT">NIT</option>
+								<option value="TEST">TEST</option>
+								<option value="ORCL">ORCL</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-2">
+							<label>NOTE</label>
+						</div>
+						<div class="col-6">
+							<textarea th:field="*{prodNote}" class="form-control"></textarea>
+						</div>
+					</div>
+
+					<input type="submit" value="Update" class="btn btn-success"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

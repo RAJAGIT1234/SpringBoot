@@ -1,0 +1,68 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Products Register Page!</h3>
+			</div>
+			<div class="card-body">
+
+				<form th:action="@{/product/save}" method="POST">
+
+					<div class="row">
+						<div class="col-2">
+							<label>CODE</label>
+						</div>
+						<div class="col-6">
+							<input type="text" name="prodCode" class="form-control" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-2">
+							<label>COST</label>
+						</div>
+						<div class="col-6">
+							<input type="text" name="prodCost" class="form-control" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-2">
+							<label>VENDOR</label>
+						</div>
+						<div class="col-6">
+							<select name="prodVen" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="NIT">NIT</option>
+								<option value="TEST">TEST</option>
+								<option value="ORCL">ORCL</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-2">
+							<label>NOTE</label>
+						</div>
+						<div class="col-6">
+							<textarea name="prodNote" class="form-control"></textarea>
+						</div>
+					</div>
+
+					<input type="submit" value="Create" class="btn btn-success"/>
+				</form>
+			</div>
+			
+			<div class="card-footer bg-white" th:if="${message!=null}">
+				<span th:text="${message}" class="text-success"></span>
+			</div>
+		</div>
+		<a class="btn btn-info" th:href="@{/product/all}">View All</a>
+	</div>
+</body>
+</html>
